@@ -1,15 +1,21 @@
+"use client";
+import Index from "@/PagesCompoenets/Attendence/Index";
+import Header from "@/compoenets/Layout/Header";
 import Sidebar from "@/compoenets/Layout/Sidebar";
-import React from "react";
+import React, { useState } from "react";
 
-const page = () => {
+const Page = () => {
+  const [active, setActive] = useState(0);
+
   return (
     <div className="flex justify-start place-items-start">
-      <Sidebar />
-      <div className="w-full bg-black h-[100vh] overflow-auto">
-        <p className="text-white">Hello World</p>
+      <Sidebar active={active} setactive={setActive} />
+      <div className="w-full bg-black h-[100vh] overflow-auto text-white">
+        <Header />
+        {active === 0 && <Index />}
       </div>
     </div>
   );
 };
 
-export default page;
+export default Page;

@@ -6,14 +6,16 @@ import { BsListTask } from "react-icons/bs";
 import { MdAddTask } from "react-icons/md";
 import { MdOutlineNotificationImportant } from "react-icons/md";
 import { IoMdTimer } from "react-icons/io";
+import { color1, color2 } from "../Colors/Color";
 
-const Sidebar = () => {
+const Sidebar = ({ active, setactive }) => {
   const [togel, setTogel] = useState(false);
   return (
     <div
       className={`${
         togel ? "!w-[60px] duration-200" : "w-[350px] duration-200"
-      } bg-[#212022] h-[100vh] sticky top-0`}
+      } h-[100vh] sticky top-0`}
+      style={{ backgroundColor: color1 }}
     >
       <IoIosArrowBack
         onClick={() => setTogel(!togel)}
@@ -43,7 +45,10 @@ const Sidebar = () => {
           href="#"
           className={`flex justify-start  place-items-center gap-[13px] my-2 py-1 ${
             togel ? "px-1 my-3" : "px-3"
-          } text-white hover:text-[#E92129]`}
+          } text-white hover:text-[#E92129] ${
+            active === 0 ? "!text-[#E92129]" : ""
+          }`}
+          onClick={() => setactive(0)}
         >
           {!togel ? (
             <>
@@ -64,7 +69,10 @@ const Sidebar = () => {
           href="#"
           className={`flex justify-start  place-items-center gap-[13px] my-2 py-1 ${
             togel ? "px-1 my-3" : "px-3"
-          } text-white hover:text-[#E92129]`}
+          } text-white hover:text-[#E92129] ${
+            active === 1 ? "!text-[#E92129]" : ""
+          }`}
+          onClick={() => setactive(1)}
         >
           {!togel ? (
             <>
@@ -79,7 +87,10 @@ const Sidebar = () => {
           href="#"
           className={`flex justify-start  place-items-center gap-[13px] my-2 py-1 ${
             togel ? "px-1 my-3" : "px-3"
-          } text-white hover:text-[#E92129]`}
+          } text-white hover:text-[#E92129] ${
+            active === 2 ? "!text-[#E92129]" : ""
+          }`}
+          onClick={() => setactive(2)}
         >
           {!togel ? (
             <>
@@ -94,7 +105,10 @@ const Sidebar = () => {
           href="#"
           className={`flex justify-start  place-items-center gap-[13px] my-2 py-1 ${
             togel ? "px-1 my-3" : "px-3"
-          } text-white hover:text-[#E92129]`}
+          } text-white hover:text-[#E92129] ${
+            active === 3 ? "!text-[#E92129]" : ""
+          }`}
+          onClick={() => setactive(3)}
         >
           {!togel ? (
             <>
