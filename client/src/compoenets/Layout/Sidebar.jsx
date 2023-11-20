@@ -12,24 +12,38 @@ const Sidebar = () => {
   return (
     <div
       className={`${
-        togel ? "!w-[60px] duration-300" : "w-[350px] duration-300"
+        togel ? "!w-[60px] duration-200" : "w-[350px] duration-200"
       } bg-[#212022] h-[100vh] sticky top-0`}
     >
       <IoIosArrowBack
         onClick={() => setTogel(!togel)}
         className={`${
           togel ? "rotate-180 duration-300" : "rotate-0 duration-300"
-        } absolute top-[50%] right-[-18px] rounded-full p-2 bg-[black] text-white text-[40px] cursor-pointer z-10`}
+        } absolute top-[50%] right-[-22px] rounded-full p-2 bg-[black] text-white text-[40px] cursor-pointer z-10`}
       />
-      <div className="border-b-[1px] border-b-[black] py-4 px-3 text-[28px] text-white font-serif font-bold">
-        <span className="text-[#E92129]">Nixxe</span> System
+      <div className="border-b-[1px] border-b-[black] py-4 pl-3 text-[28px] text-white font-serif font-bold">
+        {togel ? (
+          <p className="bg-black w-[30px] text-[#E92129] !p-2 h-[30px] flex justify-center place-items-center rounded-full">
+            N
+          </p>
+        ) : (
+          <>
+            <span className="text-[#E92129]">Nixxe</span> System
+          </>
+        )}
       </div>
       {/* --- menus  */}
-      <div className="menus py-4 px-3">
-        <h2 className=" text-[21px] text-[gray]">Time Table</h2>
+      <div className="menus py-4 pl-3">
+        {!togel && (
+          <h2 className=" text-[22px] font-bold text-[gray] font-serif">
+            Time Table
+          </h2>
+        )}
         <Link
           href="#"
-          className="flex justify-start duration-300 place-items-center gap-[13px] my-2 py-1 text-white hover:text-[#E92129]"
+          className={`flex justify-start  place-items-center gap-[13px] my-2 py-1 ${
+            togel ? "px-1 my-3" : "px-3"
+          } text-white hover:text-[#E92129]`}
         >
           {!togel ? (
             <>
@@ -37,14 +51,20 @@ const Sidebar = () => {
               <li className="list-none text-[18px]">Attendence</li>
             </>
           ) : (
-            <IoMdTimer className="text-[23px] duration-300" />
+            <IoMdTimer className="text-[23px]" />
           )}
         </Link>
         {/* ========================== */}
-
+        {!togel && (
+          <h2 className=" text-[22px] font-bold text-[gray] font-serif">
+            Task Management
+          </h2>
+        )}
         <Link
           href="#"
-          className="flex justify-start duration-300 place-items-center gap-[13px] my-2 py-1 text-white hover:text-[#E92129]"
+          className={`flex justify-start  place-items-center gap-[13px] my-2 py-1 ${
+            togel ? "px-1 my-3" : "px-3"
+          } text-white hover:text-[#E92129]`}
         >
           {!togel ? (
             <>
@@ -57,7 +77,9 @@ const Sidebar = () => {
         </Link>
         <Link
           href="#"
-          className="flex justify-start duration-300 place-items-center gap-[13px] my-2 py-1 text-white hover:text-[#E92129]"
+          className={`flex justify-start  place-items-center gap-[13px] my-2 py-1 ${
+            togel ? "px-1 my-3" : "px-3"
+          } text-white hover:text-[#E92129]`}
         >
           {!togel ? (
             <>
@@ -70,17 +92,68 @@ const Sidebar = () => {
         </Link>
         <Link
           href="#"
-          className="flex justify-start duration-300 place-items-center gap-[13px] my-2 py-1 text-white hover:text-[#E92129]"
+          className={`flex justify-start  place-items-center gap-[13px] my-2 py-1 ${
+            togel ? "px-1 my-3" : "px-3"
+          } text-white hover:text-[#E92129]`}
         >
           {!togel ? (
             <>
               <MdOutlineNotificationImportant className="text-[20px]" />
-              <li className="list-none text-[18px]">Importend Task</li>
+              <li className="list-none text-[18px]">Important Task</li>
             </>
           ) : (
-            <MdOutlineNotificationImportant className="text-[23px] duration-300" />
+            <MdOutlineNotificationImportant className="text-[23px]" />
           )}
         </Link>
+        {/* ===================  */}
+        <div className="h-[300px] overflow-auto">
+          {!togel && (
+            <h2 className=" text-[22px] font-bold text-[gray] font-serif">
+              Team
+            </h2>
+          )}
+          <Link
+            href="#"
+            className={`flex justify-start  place-items-center gap-[13px] my-2 py-1 ${
+              togel ? "px-1 my-3" : "px-3"
+            } text-white hover:text-[#E92129]`}
+          >
+            {!togel ? (
+              <>
+                <p className="bg-black w-[30px] h-[30px] flex justify-center place-items-center p-1 rounded-full">
+                  U
+                </p>
+                <li className="list-none text-[18px]">Name of Team Member</li>
+              </>
+            ) : (
+              <p className="bg-black w-[30px] h-[30px] flex justify-center place-items-center p-1 rounded-full">
+                U
+              </p>
+            )}
+          </Link>
+        </div>
+        {/* ======= login user  */}
+        <div className="border-t-[1px] border-[gray] flex justify-start place-items-center absolute left-0 bottom-0 w-full">
+          <Link
+            href="#"
+            className={`flex justify-start  place-items-center gap-[13px] my-2 py-1 ${
+              togel ? "px-1 my-3" : "px-3"
+            } text-white hover:text-[#E92129]`}
+          >
+            {!togel ? (
+              <>
+                <p className="bg-black w-[30px] h-[30px] flex justify-center place-items-center p-1 rounded-full">
+                  U
+                </p>
+                <li className="list-none text-[18px]">Login User Name</li>
+              </>
+            ) : (
+              <p className="bg-black w-[30px] h-[30px] flex justify-center place-items-center p-1 rounded-full">
+                U
+              </p>
+            )}
+          </Link>
+        </div>
       </div>
     </div>
   );
