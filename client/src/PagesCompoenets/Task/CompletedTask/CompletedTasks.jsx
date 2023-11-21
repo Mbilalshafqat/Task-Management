@@ -1,10 +1,7 @@
-import { color1 } from "@/compoenets/Colors/Color";
-import React, { useState } from "react";
+import React from "react";
 import TaskCard from "../TaskCard/TaskCard";
-import { GoPlus } from "react-icons/go";
-import CreateTask from "../CreateTask/CreateTask";
 
-const AllTask = () => {
+const CompletedTasks = () => {
   const data = [
     {
       id: 1,
@@ -189,26 +186,14 @@ const AllTask = () => {
     },
   ];
 
-  const [showModal, setShowModal] = useState(false);
-
+  const filterthedata = data?.filter((item) => item.status === "completed");
   return (
-    <div className="px-[10px] py-3 relative">
-      <div
-        onClick={() => setShowModal(true)}
-        className="absolute shadow-sm hover:translate-y-1 duration-200 top-[15px] right-[20px] flex justify-start place-items-center gap-2 px-3 py-1 cursor-pointer border-[1px] border-[gray] rounded-sm"
-        style={{
-          backgroundColor: color1,
-        }}
-      >
-        <p>Create Task</p>
-        <GoPlus className="text-[22px]" />
-      </div>
-      <CreateTask show={showModal} setshow={setShowModal} />
+    <div className="px-[10px] py-3">
       <div>
-        <TaskCard data={data} title={"All Tasks"} />
+        <TaskCard data={filterthedata} title={"Completed Tasks"} />
       </div>
     </div>
   );
 };
 
-export default AllTask;
+export default CompletedTasks;

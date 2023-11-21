@@ -6,7 +6,8 @@ import { BsListTask } from "react-icons/bs";
 import { MdAddTask } from "react-icons/md";
 import { MdOutlineNotificationImportant } from "react-icons/md";
 import { IoMdTimer } from "react-icons/io";
-import { color1, color2 } from "../Colors/Color";
+import { color1, color2, color3 } from "../Colors/Color";
+import { MdIncompleteCircle } from "react-icons/md";
 
 const Sidebar = ({ active, setactive }) => {
   const [togel, setTogel] = useState(false);
@@ -19,9 +20,10 @@ const Sidebar = ({ active, setactive }) => {
     >
       <IoIosArrowBack
         onClick={() => setTogel(!togel)}
+        style={{ color: color3 }}
         className={`${
           togel ? "rotate-180 duration-300" : "rotate-0 duration-300"
-        } absolute top-[50%] right-[-22px] rounded-full p-2 bg-[black] text-white text-[40px] cursor-pointer z-10`}
+        } absolute top-[50%] right-[-22px] rounded-full p-2 bg-[black]  text-[40px] cursor-pointer z-10`}
       />
       <div className="border-b-[1px] border-b-[black] py-4 pl-3 text-[28px] text-white font-serif font-bold">
         {togel ? (
@@ -117,6 +119,24 @@ const Sidebar = ({ active, setactive }) => {
             </>
           ) : (
             <MdOutlineNotificationImportant className="text-[23px]" />
+          )}
+        </Link>
+        <Link
+          href="#"
+          className={`flex justify-start  place-items-center gap-[13px] my-2 py-1 ${
+            togel ? "px-1 my-3" : "px-3"
+          } text-white hover:text-[#E92129] ${
+            active === 4 ? "!text-[#E92129]" : ""
+          }`}
+          onClick={() => setactive(4)}
+        >
+          {!togel ? (
+            <>
+              <MdIncompleteCircle className="text-[20px]" />
+              <li className="list-none text-[18px]">Incomplete Task</li>
+            </>
+          ) : (
+            <MdIncompleteCircle className="text-[23px]" />
           )}
         </Link>
         {/* ===================  */}
