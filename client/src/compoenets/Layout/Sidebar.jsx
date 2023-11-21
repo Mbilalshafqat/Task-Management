@@ -18,22 +18,30 @@ const Sidebar = ({ active, setactive }) => {
       } h-[100vh] sticky top-0`}
       style={{ backgroundColor: color1 }}
     >
-      <IoIosArrowBack
+      <p
+        className="cursor-pointer absolute   top-[47%] right-[-20px] rounded-full z-20 bg-[black] p-2"
         onClick={() => setTogel(!togel)}
-        style={{ color: color3 }}
-        className={`${
-          togel ? "rotate-180 duration-300" : "rotate-0 duration-300"
-        } absolute top-[50%] right-[-22px] rounded-full p-2 bg-[black]  text-[40px] cursor-pointer z-10`}
-      />
-      <div className="border-b-[1px] border-b-[black] py-4 pl-3 text-[28px] text-white font-serif font-bold">
+      >
+        <IoIosArrowBack
+          onClick={() => setTogel(!togel)}
+          style={{ color: color3 }}
+          className={`${
+            togel ? "rotate-180 duration-300" : "rotate-0 duration-300"
+          }  rounded-full bg-[black]  text-[26px] cursor-pointer `}
+        />
+      </p>
+      <div className="border-b-[1px]  border-b-[black] py-4 pl-3 text-[28px] text-white font-serif font-bold">
         {togel ? (
-          <p className="bg-black w-[30px] text-[#E92129] !p-2 h-[30px] flex justify-center place-items-center rounded-full">
+          <p
+            onClick={() => setactive(0)}
+            className="bg-black w-[30px] cursor-pointer text-[#E92129] !p-2 h-[30px] flex justify-center place-items-center rounded-full"
+          >
             N
           </p>
         ) : (
-          <>
+          <p className="cursor-pointer" onClick={() => setactive(0)}>
             <span className="text-[#E92129]">Nixxe</span> System
-          </>
+          </p>
         )}
       </div>
       {/* --- menus  */}

@@ -1,7 +1,8 @@
 import { color1 } from "@/compoenets/Colors/Color";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RxCross1 } from "react-icons/rx";
 import Image from "next/image";
+import { FaPlus } from "react-icons/fa6";
 
 const CreateTask = ({ show, setshow }) => {
   const users = [
@@ -42,8 +43,34 @@ const CreateTask = ({ show, setshow }) => {
       name: "Kumail",
     },
   ];
-
+  const [usersdata, setuserdata] = useState([]);
   const [showusersList, setShowUsersList] = useState(false);
+  const [points, setPoints] = useState([]);
+  const [title, setTitle] = useState("");
+  const [description, setdescription] = useState("");
+  const [username, setusername] = useState("");
+  const [mainpoint, setmainpoint] = useState("");
+
+  const slecttheuser = (e) => {
+    setusername(e.target.value);
+    setShowUsersList(true);
+    const filteredUsers = usersdata?.filter((item) =>
+      item.name.toLowerCase().includes(username.toLowerCase())
+    );
+    setuserdata(filteredUsers);
+  };
+
+  useEffect(() => {
+    if (username === "") {
+      setuserdata(users);
+    }
+  }, [username]);
+
+  const addnewpoint = () => {
+    const newpoint = [...points, mainpoint];
+    setPoints(newpoint);
+    setmainpoint("");
+  };
 
   return (
     <div
@@ -68,9 +95,11 @@ const CreateTask = ({ show, setshow }) => {
                   Title
                 </label>
                 <input
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
                   type="text"
                   placeholder="Enter Your Title."
-                  className="mb-1 w-full bg-transparent border-[1px] px-2 py-1 rounded-sm outline-none"
+                  className="mb-1 w-full  bg-transparent border-[1px] px-2 py-2 rounded-sm outline-none"
                 />
               </div>
               <div>
@@ -78,6 +107,8 @@ const CreateTask = ({ show, setshow }) => {
                   Description
                 </label>
                 <textarea
+                  value={description}
+                  onChange={(e) => setdescription(e.target.value)}
                   rows={5}
                   type="text"
                   placeholder="Enter Your Description."
@@ -90,33 +121,78 @@ const CreateTask = ({ show, setshow }) => {
                   Select User
                 </label>
                 <input
+                  value={username}
+                  onChange={slecttheuser}
                   type="text"
                   placeholder="Enter User Name."
-                  className="mb-1 w-full bg-transparent border-[1px] px-2 py-1 rounded-sm outline-none"
+                  className="mb-1 w-full bg-transparent border-[1px] px-2 py-2 rounded-sm outline-none"
                 />
                 {/* ---- show list of users  */}
                 {showusersList && (
                   <div className="w-full max-h-[230px] p-1 mt-[-3px] z-10 overflow-auto bg-black rounded-sm">
-                    {users?.map((item, index) => {
-                      return (
-                        <>
-                          <div className="flex cursor-pointer hover:bg-[#212022] border-b-[1px] justify-start place-items-center gap-2 p-1 my-1">
-                            <Image
-                              src={
-                                "https://avatars.githubusercontent.com/u/106830172?s=400&u=0240064fb7c3cd1e4fd61b18a0d790c0e4490e55&v=4"
-                              }
-                              width={40}
-                              height={40}
-                              alt=""
-                              className="rounded-full"
-                            />
-                            <p className="text-[20px]">{item.name}</p>
-                          </div>
-                        </>
-                      );
-                    })}
+                    {usersdata.length > 0 ? (
+                      usersdata?.map((item, index) => {
+                        return (
+                          <>
+                            <div
+                              className="flex cursor-pointer hover:bg-[#212022] border-b-[1px] justify-start place-items-center gap-2 p-1 my-1"
+                              onClick={() => {
+                                setusername(item?.name);
+                                setShowUsersList(false);
+                              }}
+                            >
+                              <Image
+                                src={
+                                  "https://avatars.githubusercontent.com/u/106830172?s=400&u=0240064fb7c3cd1e4fd61b18a0d790c0e4490e55&v=4"
+                                }
+                                width={40}
+                                height={40}
+                                alt=""
+                                className="rounded-full"
+                              />
+                              <p className="text-[20px]">{item.name}</p>
+                            </div>
+                          </>
+                        );
+                      })
+                    ) : (
+                      <p className="w-full bg-[#212022]  px-3 py-2 text-white ">
+                        No User Found
+                      </p>
+                    )}
                   </div>
                 )}
+              </div>
+              {/* ===== poinst  */}
+              <div>
+                <label htmlFor="poinst" className="block my-1">
+                  Main Points
+                </label>
+                <div className="flex justify-between gap-1 place-items-center border-[1px] px-2 py-1">
+                  <input
+                    value={mainpoint}
+                    onChange={(e) => setmainpoint(e.target.value)}
+                    type="text"
+                    placeholder="Enter Main Points Of Task"
+                    className="mb-1 w-full bg-transparent  px-2 py-1 rounded-sm outline-none"
+                  />
+                  <FaPlus
+                    className="text-[28px]  text-white cursor-pointer"
+                    onClick={addnewpoint}
+                  />
+                </div>
+              </div>
+              <div className="max-h-[100px] w-full overflow-auto ">
+                {points?.map((item, index) => {
+                  return (
+                    <li
+                      key={index}
+                      className="py-1 border-b-[1px] border-[gray] my-2 px-2 w-full"
+                    >
+                      {item}
+                    </li>
+                  );
+                })}
               </div>
               <button className="w-full bg-black my-3 rounded-sm hover:bg-transparent hover:text-[white] hover:border-[1px] border-[white] py-2 px-3 text-[19px]">
                 Create

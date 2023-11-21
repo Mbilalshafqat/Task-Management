@@ -8,3 +8,12 @@
   box-sizing: border-box;
   font-family: sans-serif !important;
 }
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #e92129;
+  scrollbar-color: #000 #e92129;
+}
