@@ -14,20 +14,24 @@ const Sidebar = ({ active, setactive }) => {
   return (
     <div
       className={`${
-        togel ? "!w-[60px] duration-200" : "w-[350px] duration-200"
+        togel
+          ? "!w-[60px] duration-500"
+          : "w-[350px] duration-500 overflow-hidden"
       } h-[100vh] sticky top-0`}
       style={{ backgroundColor: color1 }}
     >
       <p
-        className="cursor-pointer absolute   top-[47%] right-[-20px] rounded-full z-20 bg-[black] p-2"
+        className="cursor-pointer absolute top-[47%] right-[-20px] rounded-full z-20 bg-[black] p-3"
         onClick={() => setTogel(!togel)}
       >
         <IoIosArrowBack
           onClick={() => setTogel(!togel)}
           style={{ color: color3 }}
-          className={`${
-            togel ? "rotate-180 duration-300" : "rotate-0 duration-300"
-          }  rounded-full bg-[black]  text-[26px] cursor-pointer `}
+          className={`rounded-full bg-[black]  cursor-pointer ${
+            togel
+              ? "rotate-180 duration-300  text-[26px]"
+              : "rotate-0 duration-300  text-[26px]"
+          }   `}
         />
       </p>
       <div className="border-b-[1px]  border-b-[black] py-4 pl-3 text-[28px] text-white font-serif font-bold">
@@ -63,7 +67,9 @@ const Sidebar = ({ active, setactive }) => {
           {!togel ? (
             <>
               <IoMdTimer className="text-[20px]" />
-              <li className="list-none text-[18px]">Attendence</li>
+              <li className={`list-none text-[18px] duration-300 w-[100%]`}>
+                Attendence
+              </li>
             </>
           ) : (
             <IoMdTimer className="text-[23px]" />
