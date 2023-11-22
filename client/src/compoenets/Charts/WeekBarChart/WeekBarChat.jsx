@@ -62,7 +62,6 @@ const WeekBarChat = () => {
         label: "Break Hours",
         data: generateRandomData(),
         backgroundColor: "#FFCA28",
-        // backgroundColor: "#FFCA28",
       },
     ],
   };
