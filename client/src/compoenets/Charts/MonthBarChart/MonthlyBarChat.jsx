@@ -26,7 +26,7 @@ const MonthlyBarChat = () => {
 
   // Generate labels with the current month's days along with the month name and date
   const generateLabels = () => {
-    const currentDate = new Date("2023-11-01");
+    const currentDate = new Date();
     const currentMonth = currentDate.getMonth();
     const daysInMonth = new Date(
       currentDate.getFullYear(),
