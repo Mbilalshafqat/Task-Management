@@ -12,7 +12,7 @@ const Page = () => {
   const [active, setActive] = useState(0);
 
   return (
-    <div className="flex justify-start place-items-start">
+    <div className="flex justify-start place-items-start ">
       <Sidebar active={active} setactive={setActive} />
       <div className="w-full bg-black h-[100vh] overflow-auto text-white">
         <Header />

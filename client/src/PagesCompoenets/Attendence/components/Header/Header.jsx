@@ -1,6 +1,6 @@
 import React from "react";
 
-const Header = ({ active, setactive }) => {
+const Header = ({ active, setactive, activechart, setActivechart }) => {
   return (
     <div className="relative px-[20px] border-b-[1px] border-[gray] flex justify-start place-items-center gap-[17px]">
       <span

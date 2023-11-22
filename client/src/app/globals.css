@@ -8,6 +8,11 @@
   box-sizing: border-box;
   font-family: sans-serif !important;
 }
+body {
+  height: 100vh;
+  overflow-y: hidden !important;
+  overflow-x: hidden !important;
+}
 
 ::-webkit-scrollbar {
   width: 7px;
