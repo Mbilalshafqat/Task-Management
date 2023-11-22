@@ -15,8 +15,8 @@ const Sidebar = ({ active, setactive }) => {
     <div
       className={`${
         togel
-          ? "!w-[60px] duration-500"
-          : "w-[350px] duration-500 overflow-hidden"
+          ? "!w-[60px] duration-200"
+          : "w-[350px] duration-200 overflow-hidden"
       } h-[100vh] sticky top-0`}
       style={{ backgroundColor: color1 }}
     >
