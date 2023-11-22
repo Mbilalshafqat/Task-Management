@@ -21,13 +21,16 @@ const Sidebar = ({ active, setactive }) => {
       style={{ backgroundColor: color1 }}
     >
       <p
-        className="cursor-pointer absolute top-[47%] right-[-20px] rounded-full z-20 bg-[black] p-3"
+        style={{
+          backgroundColor: color2,
+        }}
+        className="cursor-pointer absolute top-[47%] right-[-20px] rounded-full z-20 p-3"
         onClick={() => setTogel(!togel)}
       >
         <IoIosArrowBack
           onClick={() => setTogel(!togel)}
-          style={{ color: color3 }}
-          className={`rounded-full bg-[black]  cursor-pointer ${
+          style={{ color: color3, backgroundColor: color2 }}
+          className={`rounded-full  cursor-pointer ${
             togel
               ? "rotate-180 duration-300  text-[26px]"
               : "rotate-0 duration-300  text-[26px]"

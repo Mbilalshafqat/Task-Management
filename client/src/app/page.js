@@ -4,6 +4,7 @@ import AllTask from "@/PagesCompoenets/Task/AllTask/AllTask";
 import CompletedTasks from "@/PagesCompoenets/Task/CompletedTask/CompletedTasks";
 import IncompletedTask from "@/PagesCompoenets/Task/Incompleted/IncompletedTask";
 import ImportantTask from "@/PagesCompoenets/Task/importentTask/ImportantTask";
+import { color2 } from "@/compoenets/Colors/Color";
 import Header from "@/compoenets/Layout/Header";
 import Sidebar from "@/compoenets/Layout/Sidebar";
 import React, { useState } from "react";
@@ -14,7 +15,10 @@ const Page = () => {
   return (
     <div className="flex justify-start place-items-start ">
       <Sidebar active={active} setactive={setActive} />
-      <div className="w-full bg-black h-[100vh] overflow-auto text-white">
+      <div
+        className="w-full h-[100vh] overflow-auto text-white"
+        style={{ backgroundColor: color2 }}
+      >
         <Header />
         {active === 0 && <Index />}
         {active === 1 && <AllTask />}

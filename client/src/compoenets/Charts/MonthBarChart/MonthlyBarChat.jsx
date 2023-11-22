@@ -10,6 +10,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import { color1 } from "@/compoenets/Colors/Color";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -103,7 +104,10 @@ const MonthlyBarChat = () => {
   };
   return (
     <div className="h-[400px]  w-[100%]   !text-white ">
-      <div className=" bg-[#212022] w-full py-3 px-3 flex justify-between place-items-center ">
+      <div
+        style={{ backgroundColor: color1 }}
+        className=" w-full py-3 px-3 flex justify-between place-items-center "
+      >
         <h2 className="text-[white]">TRACKED HOURS</h2>
         <div className="flex justify-start place-items-center gap-[20px]">
           <div className="flex justify-start place-items-center gap-[8px] border-[1px] border-[gray] px-2 py-[2px] rounded-sm">
