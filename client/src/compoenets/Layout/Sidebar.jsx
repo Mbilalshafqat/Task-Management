@@ -52,16 +52,16 @@ const Sidebar = ({ active, setactive }) => {
             N
           </p>
         ) : (
-          // <p className="cursor-pointer" onClick={() => setactive(0)}>
-          //   <span className="text-[#E92129]">Nixxe</span> System
-          // </p>
-          <Imgae
-            className="ml-2"
-            src={NixxeLogo}
-            width={80}
-            height={50}
-            alt=""
-          />
+          <p className="cursor-pointer" onClick={() => setactive(0)}>
+            <span className="text-[#E92129]">Nixxe</span> System
+          </p>
+          // <Imgae
+          //   className="ml-2"
+          //   src={NixxeLogo}
+          //   width={80}
+          //   height={50}
+          //   alt=""
+          // />
         )}
       </div>
       {/* --- menus  */}
