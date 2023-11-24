@@ -21,18 +21,21 @@ ChartJS.register(
 );
 const WeekBarChat = () => {
   const daysOfWeek = ["M", "T", "W", "T", "F", "S", "S"];
-  const generateRandomData = () => {
-    return Array.from({ length: 7 }, () => Math.floor(Math.random() * 10) + 1);
-  };
-
-  // Generate labels with the current week's days along with the month name and date
   const generateLabels = () => {
-    const currentDate = new Date("2023-11-20");
-    const currentDayOfWeek = currentDate.getDay(); // 0 (Sunday) to 6 (Saturday)
+    const currentDate = new Date();
+    const currentDayOfWeek = currentDate.getDay();
+    const daysOfWeek = [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday",
+    ];
 
-    // Calculate the start date of the current week (Sunday is the first day of the week)
-    const weekStartDate = new Date("2023-11-20");
-    weekStartDate.setDate(currentDate.getDate() - currentDayOfWeek);
+    const weekStartDate = new Date(currentDate);
+    weekStartDate.setDate(currentDate.getDate() - currentDayOfWeek + 1); // Adjust the start day to Monday
 
     const labels = [];
 
@@ -45,10 +48,15 @@ const WeekBarChat = () => {
         month: "short",
         day: "numeric",
       });
-      labels.push(`${dayOfWeek} - ${formattedDateString}`);
+      labels.push(`${formattedDateString}`);
     }
 
     return labels;
+  };
+
+  const generateRandomData = () => {
+    // Modify this function to generate random data for each day of the week
+    return Array.from({ length: 7 }, () => Math.floor(Math.random() * 8) + 1);
   };
 
   const data = {

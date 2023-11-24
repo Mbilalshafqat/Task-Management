@@ -15,8 +15,8 @@ const Sidebar = ({ active, setactive }) => {
     <div
       className={`${
         togel
-          ? "!w-[60px] duration-200"
-          : "w-[350px] duration-200 overflow-hidden"
+          ? "!w-[60px] duration-300"
+          : "w-[350px] duration-300 overflow-hidden"
       } h-[100vh] sticky top-0`}
       style={{ backgroundColor: color1 }}
     >
@@ -54,7 +54,11 @@ const Sidebar = ({ active, setactive }) => {
       {/* --- menus  */}
       <div className="menus py-4 pl-3">
         {!togel && (
-          <h2 className=" text-[22px] font-bold text-[gray] font-serif">
+          <h2
+            className={`${
+              togel ? "text-[0px]" : "text-[22px]"
+            } duration-300  font-bold text-[gray] font-serif`}
+          >
             Time Table
           </h2>
         )}
@@ -70,7 +74,11 @@ const Sidebar = ({ active, setactive }) => {
           {!togel ? (
             <>
               <IoMdTimer className="text-[20px]" />
-              <li className={`list-none text-[18px] duration-300 w-[100%]`}>
+              <li
+                className={`list-none ${
+                  togel ? "text-[0px]" : "text-[18px]"
+                } duration-300 w-[100%]`}
+              >
                 Attendence
               </li>
             </>
@@ -96,7 +104,13 @@ const Sidebar = ({ active, setactive }) => {
           {!togel ? (
             <>
               <BsListTask className="text-[20px]" />
-              <li className={`list-none text-[18px]`}>All Task</li>
+              <li
+                className={`list-none ${
+                  togel ? "text-[0px]" : "text-[18px]"
+                } duration-300 w-[100%]`}
+              >
+                All Task
+              </li>
             </>
           ) : (
             <BsListTask className="text-[23px] duration-300" />
@@ -114,7 +128,13 @@ const Sidebar = ({ active, setactive }) => {
           {!togel ? (
             <>
               <MdAddTask className="text-[20px]" />
-              <li className="list-none text-[18px]">Completed Task</li>
+              <li
+                className={`list-none ${
+                  togel ? "text-[0px]" : "text-[18px]"
+                } duration-300 w-[100%]`}
+              >
+                Completed Task
+              </li>
             </>
           ) : (
             <MdAddTask className="text-[23px] duration-300" />
@@ -132,7 +152,13 @@ const Sidebar = ({ active, setactive }) => {
           {!togel ? (
             <>
               <MdOutlineNotificationImportant className="text-[20px]" />
-              <li className="list-none text-[18px]">Important Task</li>
+              <li
+                className={`list-none ${
+                  togel ? "text-[0px]" : "text-[18px]"
+                } duration-300 w-[100%]`}
+              >
+                Important Task
+              </li>
             </>
           ) : (
             <MdOutlineNotificationImportant className="text-[23px]" />
@@ -150,7 +176,13 @@ const Sidebar = ({ active, setactive }) => {
           {!togel ? (
             <>
               <MdIncompleteCircle className="text-[20px]" />
-              <li className="list-none text-[18px]">Incomplete Task</li>
+              <li
+                className={`list-none ${
+                  togel ? "text-[0px]" : "text-[18px]"
+                } duration-300 w-[100%]`}
+              >
+                Incomplete Task
+              </li>
             </>
           ) : (
             <MdIncompleteCircle className="text-[23px]" />
@@ -174,7 +206,13 @@ const Sidebar = ({ active, setactive }) => {
                 <p className="bg-black w-[30px] h-[30px] flex justify-center place-items-center p-1 rounded-full">
                   U
                 </p>
-                <li className="list-none text-[18px]">Name of Team Member</li>
+                <li
+                  className={`list-none ${
+                    togel ? "text-[0px]" : "text-[18px]"
+                  } duration-300 w-[100%]`}
+                >
+                  Name of Team Member
+                </li>
               </>
             ) : (
               <p className="bg-black w-[30px] h-[30px] flex justify-center place-items-center p-1 rounded-full">
