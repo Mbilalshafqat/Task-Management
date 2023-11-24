@@ -10,7 +10,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { color1 } from "@/compoenets/Colors/Color";
+import { chartColor1, chartColor2, color1 } from "@/compoenets/Colors/Color";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -65,12 +65,12 @@ const WeekBarChat = () => {
       {
         label: "Worked Hours",
         data: generateRandomData(),
-        backgroundColor: "#51DB2B",
+        backgroundColor: chartColor2,
       },
       {
         label: "Break Hours",
         data: generateRandomData(),
-        backgroundColor: "#FFCA28",
+        backgroundColor: chartColor1,
       },
     ],
   };
@@ -119,7 +119,10 @@ const WeekBarChat = () => {
             <p className="text-[gray]">WORKED HOURS</p>
           </div>
           <div className="flex justify-start place-items-center gap-[8px] border-[1px] border-[gray] px-2 py-[2px] rounded-sm">
-            <span className="w-[18px] h-[18px] bg-[#FFCA28] flex rounded-md"></span>
+            <span
+              style={{ backgroundColor: chartColor1 }}
+              className="w-[18px] h-[18px] bg-[#FFCA28] flex rounded-md"
+            ></span>
             <p>47m</p>
             <p className="text-[gray]">BREAKS</p>
           </div>
