@@ -9,8 +9,8 @@ import { IoMdTimer } from "react-icons/io";
 import { color1, color2, color3 } from "../Colors/Color";
 import { MdIncompleteCircle } from "react-icons/md";
 import { MdOutlineAccountCircle } from "react-icons/md";
-import Imgae from "next/image";
-import NixxeLogo from "../../Assests/NixxeSolutionPNG.png";
+// import Imgae from "next/image";
+// import NixxeLogo from "../../Assests/NixxeSolutionPNG.png";
 
 const Sidebar = ({ active, setactive }) => {
   const [togel, setTogel] = useState(false);
