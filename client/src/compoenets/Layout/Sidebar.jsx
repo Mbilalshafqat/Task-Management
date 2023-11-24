@@ -8,6 +8,7 @@ import { MdOutlineNotificationImportant } from "react-icons/md";
 import { IoMdTimer } from "react-icons/io";
 import { color1, color2, color3 } from "../Colors/Color";
 import { MdIncompleteCircle } from "react-icons/md";
+import { MdOutlineAccountCircle } from "react-icons/md";
 
 const Sidebar = ({ active, setactive }) => {
   const [togel, setTogel] = useState(false);
@@ -41,7 +42,10 @@ const Sidebar = ({ active, setactive }) => {
         {togel ? (
           <p
             onClick={() => setactive(0)}
-            className="bg-black w-[30px] cursor-pointer text-[#E92129] !p-2 h-[30px] flex justify-center place-items-center rounded-full"
+            style={{
+              padding: "1px",
+            }}
+            className=" bg-black w-[45px] cursor-pointer text-[#E92129] ml-[-6px]   flex justify-center place-items-center rounded-full"
           >
             N
           </p>
@@ -185,7 +189,7 @@ const Sidebar = ({ active, setactive }) => {
               </li>
             </>
           ) : (
-            <MdIncompleteCircle className="text-[23px]" />
+            <MdIncompleteCircle className="text-[23px] cursor-pointer" />
           )}
         </Link>
         {/* ===================  */}
@@ -223,7 +227,7 @@ const Sidebar = ({ active, setactive }) => {
         </div>
         {/* ======= login user  */}
         <div className="border-t-[1px] border-[gray] flex justify-start place-items-center absolute left-0 bottom-0 w-full">
-          <Link
+          {/* <Link
             href="#"
             className={`flex justify-start  place-items-center gap-[13px] my-2 py-1 ${
               togel ? "px-1 my-3" : "px-3"
@@ -240,6 +244,22 @@ const Sidebar = ({ active, setactive }) => {
               <p className="bg-black w-[30px] h-[30px] flex justify-center place-items-center p-1 rounded-full">
                 U
               </p>
+            )}
+          </Link> */}
+          <Link
+            href="/login"
+            className={`flex justify-start  place-items-center gap-[13px] my-2 py-1 ${
+              togel ? "px-1 my-3" : "px-3"
+            } text-white hover:text-[#E92129]`}
+          >
+            {!togel ? (
+              <>
+                <MdOutlineAccountCircle className="text-[23px] cursor-pointer" />
+
+                <li className="list-none text-[18px]">Login / Signup</li>
+              </>
+            ) : (
+              <MdOutlineAccountCircle className="ml-2 text-[23px] cursor-pointer" />
             )}
           </Link>
         </div>
