@@ -2,8 +2,20 @@ import React from "react";
 import { GiCoffeeCup } from "react-icons/gi";
 import { TbPlayerRecordFilled } from "react-icons/tb";
 import { color1 } from "../Colors/Color";
+import { useStopwatch } from "react-timer-hook";
 
 const Header = () => {
+  const {
+    totalSeconds,
+    seconds,
+    minutes,
+    hours,
+    days,
+    isRunning,
+    start,
+    pause,
+    reset,
+  } = useStopwatch({ autoStart: false });
   return (
     <div
       style={{ backgroundColor: color1 }}
@@ -11,9 +23,14 @@ const Header = () => {
     >
       <p className="text-[22px]">Dashboard</p>
       <div className="flex justify-start place-items-center gap-[11px]">
-        <p className="text-[18px]">1:25:44</p>
+        <p className="text-[18px]">
+          <span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>
+        </p>
         <GiCoffeeCup className="text-[29px] bg-[#FFB733] cursor-pointer p-1 rounded-full text-[white]" />
-        <TbPlayerRecordFilled className="text-[30px] cursor-pointer p-1 rounded-full bg-[red] text-white" />
+        <TbPlayerRecordFilled
+          onClick={start}
+          className="text-[30px] cursor-pointer p-1 rounded-full bg-[red] text-white"
+        />
       </div>
     </div>
   );

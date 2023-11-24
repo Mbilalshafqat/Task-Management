@@ -56,7 +56,8 @@ const Sidebar = ({ active, setactive }) => {
           //   <span className="text-[#E92129]">Nixxe</span> System
           // </p>
           <Imgae
-            className="ml-2"
+            onClick={() => setactive(0)}
+            className="ml-2 cursor-pointer"
             src={NixxeLogo}
             width={130}
             height={100}
