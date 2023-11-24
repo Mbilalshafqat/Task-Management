@@ -9,8 +9,8 @@ import { IoMdTimer } from "react-icons/io";
 import { color1, color2, color3 } from "../Colors/Color";
 import { MdIncompleteCircle } from "react-icons/md";
 import { MdOutlineAccountCircle } from "react-icons/md";
-// import Imgae from "next/image";
-// import NixxeLogo from "../../Assests/NixxeSolutionPNG.png";
+import Imgae from "next/image";
+import NixxeLogo from "../../Assests/NixxeSolutionPNG.png";
 
 const Sidebar = ({ active, setactive }) => {
   const [togel, setTogel] = useState(false);
@@ -52,16 +52,16 @@ const Sidebar = ({ active, setactive }) => {
             N
           </p>
         ) : (
-          <p className="cursor-pointer" onClick={() => setactive(0)}>
-            <span className="text-[#E92129]">Nixxe</span> System
-          </p>
-          // <Imgae
-          //   className="ml-2"
-          //   src={NixxeLogo}
-          //   width={80}
-          //   height={50}
-          //   alt=""
-          // />
+          // <p className="cursor-pointer" onClick={() => setactive(0)}>
+          //   <span className="text-[#E92129]">Nixxe</span> System
+          // </p>
+          <Imgae
+            className="ml-2"
+            src={NixxeLogo}
+            width={130}
+            height={100}
+            alt=""
+          />
         )}
       </div>
       {/* --- menus  */}
