@@ -19,7 +19,7 @@ const Header = () => {
   return (
     <div
       style={{ backgroundColor: color1 }}
-      className={`bg-${color1} text-white w-full flex justify-between place-items-center py-4 h-[75px] mb-1 px-3`}
+      className={`bg-${color1} z-50 text-white w-full flex justify-between place-items-center sticky top-0 py-4 h-[87px] mb-1 px-3`}
     >
       <p className="text-[22px]">Dashboard</p>
       <div className="flex justify-start place-items-center gap-[11px]">
