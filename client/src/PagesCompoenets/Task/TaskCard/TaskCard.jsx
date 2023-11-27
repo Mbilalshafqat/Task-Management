@@ -24,7 +24,7 @@ const TaskCard = ({ data, title }) => {
           return (
             <>
               <div
-                className="w-[310px] relative rounded-md p-2 hover:translate-y-2 duration-300 m-2 h-[260px] flex flex-col justify-between"
+                className="w-[310px] relative rounded-md p-3 hover:translate-y-2 duration-300 m-2 h-[300px] flex flex-col justify-between"
                 style={{ backgroundColor: color1 }}
                 key={index}
               >

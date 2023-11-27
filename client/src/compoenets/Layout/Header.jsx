@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { GiCoffeeCup } from "react-icons/gi";
 import { TbPlayerRecordFilled } from "react-icons/tb";
 import { color1 } from "../Colors/Color";
@@ -16,6 +16,18 @@ const Header = () => {
     pause,
     reset,
   } = useStopwatch({ autoStart: false });
+
+  const [timer, setTimer] = useState(false);
+
+  const timerstartfunction = () => {
+    setTimer(!timer);
+    if (timer === false) {
+      start();
+    } else {
+      pause();
+    }
+  };
+
   return (
     <div
       style={{ backgroundColor: color1 }}
@@ -28,7 +40,7 @@ const Header = () => {
         </p>
         <GiCoffeeCup className="text-[29px] bg-[#FFB733] cursor-pointer p-1 rounded-full text-[white]" />
         <TbPlayerRecordFilled
-          onClick={start}
+          onClick={timerstartfunction}
           className="text-[30px] cursor-pointer p-1 rounded-full bg-[red] text-white"
         />
       </div>
