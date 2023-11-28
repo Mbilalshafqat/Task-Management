@@ -1,6 +1,8 @@
 const validator = require("validator");
 const ErrorHandler = require("../utiles/error");
 const Prisma = require("../prisma/db");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 module.exports = {
   // ----- create user
@@ -25,11 +27,18 @@ module.exports = {
       if (IsUserExist) {
         return next(new ErrorHandler("Email Alrady Exist, Plaese Login", 400));
       }
+      //   ---- hash the password
+      const generateSalt = await bcrypt.genSalt(10);
+      const HashPassword = await bcrypt.hash(password, generateSalt);
+      //   ---- generate token
+      const Token = await jwt.sign({ id: email }, process.env.JWT_SECRET, {
+        expiresIn: "7d",
+      });
       //   --- create the user
       const newUser = await Prisma.user.create({
         data: {
           email,
-          password,
+          password: HashPassword,
           userName,
         },
       });
@@ -37,7 +46,10 @@ module.exports = {
         sucess: true,
         message: "SignUp Successfully",
         user: newUser,
+        Token,
       });
-    } catch (error) {}
+    } catch (error) {
+      next(new ErrorHandler(error.message, 400));
+    }
   },
 };
