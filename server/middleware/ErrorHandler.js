@@ -1,30 +1,35 @@
 const ErrorHandler = require("../utiles/error");
 
-const ErrorMiddleware = (err, req, res, next) => {
-  err.message = err.message || "Internal Server Error";
+module.exports = (err, req, res, next) => {
   err.statusCode = err.statusCode || 500;
+  err.message = err.message || "Internal server Error";
 
-  //  duplicate email
-  if (err.code === "DUPLICATE_EMAIL_ERROR") {
-    const message = "Email address is already registered";
+  // wrong mongodb id error
+  if (err.name === "CastError") {
+    const message = `Resources not found with this id.. Invalid ${err.path}`;
     err = new ErrorHandler(message, 400);
   }
 
-  // Handle JWT expiration error
-  if (err.name === "TokenExpiredError") {
-    const message = "JWT token has expired";
+  // Duplicate key error
+  if (err.code === 11000) {
+    const message = `Duplicate key ${Object.keys(err.keyValue)} Entered`;
     err = new ErrorHandler(message, 400);
   }
 
-  // Handle other JWT-related errors
+  // wrong jwt error
   if (err.name === "JsonWebTokenError") {
-    const message = "Invalid JWT token";
+    const message = `Your url is invalid please try again letter`;
     err = new ErrorHandler(message, 400);
   }
+
+  // jwt expired
+  if (err.name === "TokenExpiredError") {
+    const message = `Your Url is expired please try again letter!`;
+    err = new ErrorHandler(message, 400);
+  }
+
   res.status(err.statusCode).json({
     success: false,
     message: err.message,
   });
 };
-
-module.exports = ErrorMiddleware;

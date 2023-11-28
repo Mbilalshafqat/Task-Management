@@ -37,4 +37,4 @@ process.on("uncaughtException", () => {
   });
 });
 
-require("./utiles/error");
+app.use(require("./middleware/ErrorHandler"));
