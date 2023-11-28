@@ -4,7 +4,7 @@ const ErrorMiddleware = (err, req, res, next) => {
   err.message = err.message || "Internal Server Error";
   err.statusCode = err.statusCode || 500;
 
-  // Check for a specific error scenario (e.g., duplicate email)
+  //  duplicate email
   if (err.code === "DUPLICATE_EMAIL_ERROR") {
     const message = "Email address is already registered";
     err = new ErrorHandler(message, 400);
