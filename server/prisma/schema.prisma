@@ -8,11 +8,11 @@ datasource db {
 }
 
 // --- user 
-
 model User {
   id           Int     @id @default(autoincrement())
   userName     String
   email        String
   password     String
   profileImage String?
+  role         String  @default("user")
 }
