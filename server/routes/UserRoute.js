@@ -6,4 +6,6 @@ const TokenVerify = require("../middleware/TokenVerify");
 // ---- create User
 router.post("/signup", controller.createUser);
 
+router.post("/login", controller.loginUser);
+
 module.exports = router;
