@@ -5,8 +5,5 @@ const TokenVerify = require("../middleware/TokenVerify");
 
 // ---- create User
 router.post("/signup", controller.createUser);
-router.get("/test", TokenVerify, (req, res) => {
-  res.send({ message: "hello" });
-});
 
 module.exports = router;
