@@ -93,26 +93,4 @@ module.exports = {
       next(new ErrorHandler(error.message, 400));
     }
   },
-  // ---- get all users
-  allUsers: async (req, res, next) => {
-    try {
-      if (nodeCache.has("users")) {
-        const users = JSON.parse(nodeCache.get("users"));
-        res.status(200).json({
-          success: true,
-          users,
-        });
-      } else {
-        const users = await Prisma.user.findMany();
-        nodeCache.set("users", JSON.stringify(users));
-        res.status(200).json({
-          success: true,
-          message: "data",
-          users,
-        });
-      }
-    } catch (error) {
-      next(new ErrorHandler(error.message, 400));
-    }
-  },
 };
