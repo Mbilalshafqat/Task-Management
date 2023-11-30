@@ -3,6 +3,8 @@ const ErrorHandler = require("../utiles/error");
 const Prisma = require("../prisma/db");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const NodeCache = require("node-cache");
+const nodeCache = new NodeCache();
 
 module.exports = {
   // ----- create user
@@ -87,6 +89,28 @@ module.exports = {
         isUser,
         Token,
       });
+    } catch (error) {
+      next(new ErrorHandler(error.message, 400));
+    }
+  },
+  // ---- get all users
+  allUsers: async (req, res, next) => {
+    try {
+      if (nodeCache.has("users")) {
+        const users = JSON.parse(nodeCache.get("users"));
+        res.status(200).json({
+          success: true,
+          users,
+        });
+      } else {
+        const users = await Prisma.user.findMany();
+        nodeCache.set("users", JSON.stringify(users));
+        res.status(200).json({
+          success: true,
+          message: "data",
+          users,
+        });
+      }
     } catch (error) {
       next(new ErrorHandler(error.message, 400));
     }
