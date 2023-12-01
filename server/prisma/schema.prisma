@@ -9,10 +9,20 @@ datasource db {
 
 // --- user 
 model User {
-  id           Int     @id @default(autoincrement())
+  id           Int         @id @default(autoincrement())
   userName     String
   email        String
   password     String
   profileImage String?
-  role         String  @default("user")
+  role         String      @default("user")
+  timeEntries  TimeEntry[]
+}
+
+model TimeEntry {
+  id          Int       @id @default(autoincrement())
+  user        User      @relation(fields: [userId], references: [id])
+  userId      Int
+  startTime   DateTime
+  endTime     DateTime?
+  description String?
 }
