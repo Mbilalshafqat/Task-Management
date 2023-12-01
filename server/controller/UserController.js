@@ -93,4 +93,24 @@ module.exports = {
       next(new ErrorHandler(error.message, 400));
     }
   },
+  // ------ verify the token
+  verifyToken: async (req, res, next) => {
+    try {
+      const user = await Prisma.user.findFirst({
+        where: {
+          id: req.user.id,
+        },
+      });
+      if (!user) {
+        throw new ErrorHandler("Unauthorized Access, please login again", 401);
+      }
+      res.status(200).json({
+        success: true,
+        message: "Access Granted",
+        user,
+      });
+    } catch (error) {
+      next(new ErrorHandler(error.message, 400));
+    }
+  },
 };
