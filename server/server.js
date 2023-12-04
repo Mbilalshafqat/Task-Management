@@ -6,7 +6,6 @@ app.use(Cors());
 
 // --- dotenv
 require("dotenv").config();
-require("dotenv").config();
 
 // ---- body-parser
 var bodyParser = require("body-parser");
