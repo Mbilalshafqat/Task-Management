@@ -11,7 +11,7 @@ const TokenVerify = async (req, res, next) => {
     const decoded = await jwt.verify(token, process.env.JWT_SECRET);
     const user = await prisma.user.findFirst({
       where: {
-        email: decoded.email,
+        email: decoded.id,
       },
     });
     if (!user) {
